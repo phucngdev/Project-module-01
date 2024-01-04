@@ -52,7 +52,7 @@ $("#formAddNewUser").addEventListener("submit", (e) => {
       id: Math.random() * 1000,
       userName: userName,
       passWord: passWord,
-      active: "Đang hoạt động",
+      active: 1,
       type: type,
     };
     usersLocal.push(newUser);

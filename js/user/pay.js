@@ -52,7 +52,7 @@ function renderCity(data) {
 }
 
 let totalProducts = 0;
-if (userLoginLocalStorage.active === "Đang hoạt động") {
+if (userLoginLocalStorage.active === 1) {
   userLoginLocalStorage.cart.forEach((item) => {
     let price = item.priceat;
     let numberPrice = parseFloat(price.replace(/[^\d]/g, ""));
@@ -102,7 +102,7 @@ $("#btnSubmitOrder").addEventListener("click", () => {
     validateSelect(valueDistrict, "#district", "Chọn quận huyện");
     validateSelect(valueWards, "#ward", "Chọn phường xã");
   } else {
-    if (userLoginLocalStorage.active === "Đang hoạt động") {
+    if (userLoginLocalStorage.active === 1) {
       const newOrderUser = {
         id: uuidv4(),
         name: $("#username").value,
@@ -203,7 +203,7 @@ function renderProductsBuy(data) {
   $("#listBuy").innerHTML = itemProduct;
 }
 
-if (userLoginLocalStorage.active === "Đang hoạt động") {
+if (userLoginLocalStorage.active === 1) {
   $("#user").style.display = "none";
   renderProductsBuy(userLoginLocalStorage.cart);
 } else {
@@ -211,7 +211,7 @@ if (userLoginLocalStorage.active === "Đang hoạt động") {
   renderProductsBuy(cartLocalStorage);
 }
 $("#btnHome").addEventListener("click", () => {
-  if (userLoginLocalStorage.active === "Đang hoạt động") {
+  if (userLoginLocalStorage.active === 1) {
     location.href = "./home.html";
   } else {
     location.href = "./index.html";
@@ -225,7 +225,7 @@ $("#btnProducts").addEventListener("click", () => {
   }
 });
 $("#btnCtn").addEventListener("click", () => {
-  if (userLoginLocalStorage.active === "Đang hoạt động") {
+  if (userLoginLocalStorage.active === 1) {
     location.href = "./home.html";
   } else {
     location.href = "./index.html";

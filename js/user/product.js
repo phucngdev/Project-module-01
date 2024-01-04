@@ -171,7 +171,7 @@ function printInfoProduct(productID) {
   addToCartButton.parentNode.replaceChild(clonedElement, addToCartButton);
   clonedElement.addEventListener(
     "click",
-    userLoginLocalStorage.active === "Đang hoạt động"
+    userLoginLocalStorage.active === 1
       ? addToCartClickHandlerUser
       : addToCartClickHandler
   );
@@ -190,7 +190,7 @@ function printInfoProduct(productID) {
 // add bằng icon
 function addCartBtn(productID) {
   let itemProductAdd = getID(productID);
-  if (userLoginLocalStorage.active === "Đang hoạt động") {
+  if (userLoginLocalStorage.active === 1) {
     cartUser.push(itemProductAdd[0]);
     localStorage.setItem("cartUser", JSON.stringify(cartUser));
     renderCart(cartUser);

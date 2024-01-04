@@ -22,7 +22,7 @@ $("#formLogin").addEventListener("submit", (e) => {
       id: uuidv4(),
       userName: userName,
       passWord: passWord,
-      active: "Đang hoạt động",
+      active: 1,
       cart: cartUser,
       order: orderUser,
       type: "user",

@@ -6,7 +6,7 @@ let cartLocalStorage = JSON.parse(localStorage.getItem("cart")) || [];
 let userData = JSON.parse(localStorage.getItem("users")) || [];
 let cartUser = JSON.parse(localStorage.getItem("cartUser")) || [];
 
-if (userLoginLocalStorage.active === "Đang hoạt động") {
+if (userLoginLocalStorage.active === 1) {
   cartUser = userLoginLocalStorage.cart;
   renderCart(cartUser);
   checkCart(cartUser);
@@ -71,7 +71,7 @@ function renderCart(data) {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       const productDelete = button.id;
-      if (userLoginLocalStorage.active === "Đang hoạt động") {
+      if (userLoginLocalStorage.active === 1) {
         deleteProductCartUser(productDelete);
         checkCart(cartUser);
         const newData = {

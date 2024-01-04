@@ -1,0 +1,63 @@
+.orderPage {
+  width: calc(100vw - 300px);
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  overflow-y: scroll;
+}
+.tableOrder {
+  width: 100%;
+  margin-top: 20px;
+}
+.tableOrder tr td,
+.tableOrder tr th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 10px;
+}
+tr {
+  height: 60px;
+}
+.listProductsOrder {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: scroll;
+}
+.productOrder {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.image {
+  width: 80px;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.infoProduct {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+.btnFunc {
+  padding: 8px 12px;
+}
+.bg-black {
+  background-color: #000;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://www.sapo.vn/Themes/Portal/Default/StylesV2/images/logo/Sapo-logo.svg?v=202312200435"
+    />
+    <title>Quản lý danh mục</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../../css/admin/sidebar.css" />
+    <link rel="stylesheet" href="../../css/admin/product.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">
+        <img
+          src="https://www.sapo.vn/Themes/Portal/Default/StylesV2/images/logo/Sapo-logo.svg?v=202312200435"
+          alt=""
+        />
+      </div>
+      <div class="listOperation">
+        <a href="./home.html" class="itemOperation">
+          <i class="fas fa-home"></i><span>Tổng quan</span>
+        </a>
+        <a href="./order.html" class="itemOperation">
+          <i class="far fa-list-alt"></i><span>Đơn hàng</span>
+        </a>
+        <a href="./category.html" class="itemOperation">
+          <i class="far fa-list-alt"></i><span>Danh mục</span>
+        </a>
+        <a href="./products.html" class="itemOperation">
+          <i class="fas fa-box"></i><span>Sản phẩm</span>
+        </a>
+        <a href="./manage.html" class="itemOperation">
+          <i class="fas fa-users"></i><span>Quản lý tài khoản</span>
+        </a>
+        <div class="itemOperation logOut">
+          <button type="button" class="btnLogout" id="btnLogout">
+            Đăng xuất
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="productpage">
+      <div class="productpageHeader">
+        <h2><a href="">Quản lý danh mục</a></h2>
+        <div class="titleProduct">
+          <h5>Tất cả danh mục</h5>
+          <button id="btnAddProduct">
+            <i class="fas fa-plus"></i> Thêm danh mục
+          </button>
+        </div>
+        <div class="searchProduct">
+          <form class="search" id="search">
+            <i class="fas fa-search"></i>
+            <input
+              id="searchInput"
+              class="inputSearch"
+              type="text"
+              placeholder="Tìm kiếm theo tên sản phẩm, barcode, nhà cung cấp"
+            />
+          </form>
+          <div class="selectOption">
+            <select>
+              <option value="" selected>Nhà cung cấp</option>
+            </select>
+            <select>
+              <option value="" selected>Bộ lọc khác</option>
+            </select>
+            <button>Lưu bộ lọc</button>
+          </div>
+        </div>
+      </div>
+      <table class="tableProduct">
+        <thead class="thead">
+          <tr class="titleTable">
+            <th>Tên danh mục</th>
+            <th colspan="2">chức năng</th>
+          </tr>
+        </thead>
+        <tbody class="tbody" id="tbody"></tbody>
+      </table>
+      <div class="current" id="current">
+        <div class="currentPage">
+          <button id="prev">Prev</button>
+          <span id="numberCurrentPage"></span>
+          <button id="next">Next</button>
+        </div>
+      </div>
+    </div>
+    <div class="modalAdd" id="modalAddCategory">
+      <div class="closeModal d-flex justify-content-between align-items-center">
+        <span>Thêm mới danh mục</span>
+        <i id="closeIconProduct" class="far fa-times-circle"></i>
+      </div>
+      <form id="formAddCategory" class="formAddProduct">
+        <div class="d-flex gap-3">
+          <div class="flex-1 d-flex flex-column justify-content-between">
+            <div class="inputAdd d-flex flex-column gap-1">
+              <label
+                >1: Nhập tên danh mục:<span style="color: red">*</span></label
+              >
+              <input
+                type="text"
+                placeholder="nhập tên sản phẩm"
+                class="inputProduct"
+                id="nameCate"
+              />
+              <span class="err" id="errName"
+                >Tên danh mục không được để trống *</span
+              >
+            </div>
+            <div class="inputAdd d-flex justify-content-between">
+              <button type="button" id="btnCancel" class="btn btn-danger">
+                Huỷ
+              </button>
+              <button type="submit" class="btn btn-success">Thêm mới</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modalEdit" id="modalEditProduct">
+      <div class="closeModal d-flex justify-content-between align-items-center">
+        <span>Sửa thông tin danh mục</span>
+        <i id="closeIconEdit" class="far fa-times-circle"></i>
+      </div>
+      <form id="formEditProduct" class="">
+        <div class="d-flex gap-3">
+          <div class="flex-1 d-flex flex-column justify-content-between">
+            <div class="inputAdd d-flex flex-column gap-1">
+              <label
+                >1: Nhập tên danh mục:<span style="color: red">*</span></label
+              >
+              <input
+                type="text"
+                placeholder="nhập tên sản phẩm"
+                class="inputProduct"
+                id="nameEdit"
+              />
+              <span class="err" id="errNameEdit"
+                >Tên danh mục không được để trống *</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="inputAdd d-flex justify-content-between">
+          <button type="button" id="btnCancelEdit" class="btn btn-danger">
+            Huỷ
+          </button>
+          <button type="submit" class="btn btn-success">Lưu thông tin</button>
+        </div>
+      </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+    <script src="../../js/admin/category.js"></script>
+    <script src="../../js/admin/logout.js"></script>
+  </body>
+</html>

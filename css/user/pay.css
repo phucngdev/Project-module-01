@@ -1,0 +1,239 @@
+.container-custom {
+  max-width: 90%;
+  margin: 0 auto;
+}
+.payPage {
+  display: flex;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+}
+.err {
+  text-align: left;
+  margin: 0;
+  padding: 10px;
+  color: red;
+  display: none;
+}
+.border-red {
+  border: 1px solid red;
+}
+.removeMargin {
+  margin: 0;
+}
+.removePadding {
+  padding: 0;
+}
+.leftPage {
+  width: 70%;
+}
+.rightPage {
+  flex: 1;
+}
+.formPay {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.itemForm {
+  width: 50%;
+}
+.selectHeight {
+  height: 50px;
+  color: #000;
+}
+.borderRight {
+  border-right: 1px solid #ccc;
+  margin-right: 30px;
+  padding-right: 30px;
+}
+.radio_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+.display_radio {
+  margin-bottom: 20px;
+}
+.label_radio {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.removeBorderBottom {
+  border-bottom: none;
+}
+.textNoti {
+  padding: 15px;
+  border: 1px solid #000;
+  text-align: center;
+  background-color: rgba(22, 99, 208, 0.5);
+  margin-bottom: 20px;
+  color: #fff;
+  border-radius: 8px;
+}
+.textPayed {
+  padding: 30px 15px;
+  border: 1px solid #ccc;
+  background-color: rgba(244, 244, 244, 0.5);
+}
+.removeBorderTop {
+  border-top: none;
+}
+.removeBorderRadiusBottom {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.borderRadisusBottom {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.borderInput {
+  border: 1px solid #000;
+  border-radius: 8px;
+}
+.title_listBuy {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.listBuy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
+}
+.itemBuy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+.nameProductBuy {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.image img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.quantity_item {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.priceProductBuy {
+  color: #808080;
+}
+.discount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.discount input {
+  height: 50px;
+}
+.btnDiscount {
+  width: 150px;
+  height: 50px;
+  background-color: #4f4f4f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+.btnDiscount:hover {
+  opacity: 0.7;
+}
+.calcBill {
+  margin-top: 20px;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  color: #808080;
+  font-size: 14px;
+}
+.priceShip {
+  border-bottom: 1px solid #ccc;
+}
+.priceSum {
+  margin-top: 15px;
+}
+.priceSum span {
+  font-size: 18px;
+}
+.priceSum h5 {
+  color: #000;
+}
+.submitOrder {
+  margin-top: 5px;
+  display: flex;
+  justify-content: end;
+}
+.btnSubmitOrder {
+  padding: 12px 24px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+.btnSubmitOrder:hover {
+  opacity: 0.7;
+}
+.modalSuccess {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  display: none;
+}
+.modalSuccess img {
+  width: 20%;
+}
+.modalSuccess button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #1ac27a;
+  border-radius: 8px;
+  color: #fff;
+}
+.modalSuccess button:hover {
+  opacity: 0.7;
+}

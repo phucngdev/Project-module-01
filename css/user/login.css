@@ -1,0 +1,68 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+input:focus {
+  outline: none;
+}
+li {
+  list-style: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+body {
+  background: url(https://www.mbbank.com.vn/images/hp_bg_special_product.png);
+}
+h4 {
+  text-align: center;
+  margin-top: 120px;
+}
+.login {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.logo {
+  width: 70%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.login p {
+  font-size: 16px;
+  color: #000;
+  text-align: center;
+  margin-top: 10px;
+}
+.err {
+  text-align: left;
+  margin: 0;
+  padding: 10px;
+  color: red;
+  display: none;
+}
+.border-red {
+  border: 1px solid red;
+}
+.spanBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}

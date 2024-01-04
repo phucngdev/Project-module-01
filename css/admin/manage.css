@@ -1,0 +1,106 @@
+.managePage {
+  width: calc(100vw - 300px);
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 20px;
+}
+.titleManage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.titleManage h5 {
+  margin: 0;
+}
+.titleManage button {
+  padding: 6px 20px;
+  background-color: rgb(44, 44, 254);
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+.tableManage {
+  width: 100%;
+  margin-top: 20px;
+}
+.tableManage tr td,
+.tableManage tr th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+}
+/* .tableManage tr:nth-child(1) td:nth-child(6) {
+  width: 80px;
+} */
+tr {
+  height: 60px;
+}
+.modalAdd {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  padding: 10px;
+  display: none;
+}
+.closeModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+.closeModal i {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+.inputAdd {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.inputAdd input,
+.inputAdd select {
+  height: 35px;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+.formAddUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.warning,
+.err {
+  color: red;
+}
+.err {
+  display: none;
+}
+.border-red {
+  border: 1px solid red;
+}
+#modalLogout {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+  height: 150px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #fff;
+  color: #000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  display: none;
+}

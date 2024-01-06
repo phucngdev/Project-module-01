@@ -83,6 +83,7 @@
   border: none;
   background-color: transparent;
   padding: 10px;
+  cursor: pointer;
 }
 .currentPage button:hover {
   background-color: rgb(44, 44, 254);

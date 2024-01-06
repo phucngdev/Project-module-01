@@ -14,14 +14,12 @@ $("#formLogin").addEventListener("submit", (e) => {
     $("#repass").classList.add("border-red");
   } else {
     const usersLocal = JSON.parse(localStorage.getItem("users")) || [];
-    let cartUser = JSON.parse(localStorage.getItem("cartUser")) || [];
-    let orderUser = JSON.parse(localStorage.getItem("orderUser")) || [];
-    const userName = $("#userName").value;
-    const passWord = $("#passWord").value;
+    const cartUser = JSON.parse(localStorage.getItem("cartUser")) || [];
+    const orderUser = JSON.parse(localStorage.getItem("orderUser")) || [];
     const newUser = {
       id: uuidv4(),
-      userName: userName,
-      passWord: passWord,
+      username: $("#userName").value,
+      password: $("#passWord").value,
       active: 1,
       cart: cartUser,
       order: orderUser,

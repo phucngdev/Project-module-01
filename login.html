@@ -31,32 +31,33 @@
           <input
             type="text"
             class="form-control"
-            id="floatingInput"
+            id="username"
             placeholder="Username"
           />
-          <label for="floatingInput">Username</label>
+          <label for="username">Username</label>
           <span id="errUser" class="err">Username không được bỏ trống *</span>
         </div>
         <div class="form-floating">
           <input
             type="password"
             class="form-control"
-            id="floatingPassword"
+            id="password"
             placeholder="Password"
           />
-          <label for="floatingPassword">Password</label>
+          <label for="password">Password</label>
           <span id="errPass" class="err">Password không được bỏ trống *</span>
         </div>
         <span id="errLogin" class="err"
           >Username và password không chính xác *</span
         >
+        <span id="errLoginErr" class="err">Tài khoản bị chặn</span>
         <div class="d-flex justify-content-center mt-3">
           <button type="submit" class="btn btn-success w-100">Submit</button>
         </div>
       </form>
+      <span class="forgetPass"><a href="">Quên mật khẩu?</a></span>
       <span class="spanBottom"
-        >Tổng đài hỗ trợ <span>19001000</span>?
-        <a href="./register.html">Đăng ký</a></span
+        >Bạn chưa có tài khoản | <a href="./register.html">Đăng ký</a></span
       >
     </div>
 

@@ -45,15 +45,12 @@ $("#formAddNewUser").addEventListener("submit", (e) => {
     }
   } else {
     const usersLocal = JSON.parse(localStorage.getItem("users")) || [];
-    const userName = $("#username").value;
-    const passWord = $("#password").value;
-    const type = $("#type").value;
     const newUser = {
-      id: Math.random() * 1000,
-      userName: userName,
-      passWord: passWord,
+      id: uuidv4(),
+      username: $("#username").value,
+      password: $("#password").value,
       active: 1,
-      type: type,
+      type: $("#type").value,
     };
     usersLocal.push(newUser);
     localStorage.setItem("users", JSON.stringify(usersLocal));
@@ -71,17 +68,52 @@ function deleteUser(userId) {
   localStorage.setItem("users", JSON.stringify(usersLocalStore));
   renderUserLocal();
 }
+function blockUser(userId) {
+  let userBlock = usersLocalStore.find((user) => user.id === userId);
+  const newData = {
+    ...userBlock,
+    active: 0,
+  };
+  const findToSave = usersLocalStore.find((user) => user.id === userBlock.id);
+  if (findToSave) {
+    const indexUser = usersLocalStore.indexOf(findToSave);
+    usersLocalStore[indexUser] = newData;
+    localStorage.setItem("users", JSON.stringify(usersLocalStore));
+  }
+  renderUserLocal();
+}
+function unBlockUser(userId) {
+  let userBlock = usersLocalStore.find((user) => user.id === userId);
+  if (userBlock.active === 0) {
+    const newData = {
+      ...userBlock,
+      active: 1,
+    };
+    const findToSave = usersLocalStore.find((user) => user.id === userBlock.id);
+    if (findToSave) {
+      const indexUser = usersLocalStore.indexOf(findToSave);
+      usersLocalStore[indexUser] = newData;
+      localStorage.setItem("users", JSON.stringify(usersLocalStore));
+    }
+    renderUserLocal();
+  }
+}
 
 function renderUserLocal() {
   const trUsers = usersLocalStore.map((user, index) => {
     return `
     <tr key="${user.id}">
       <td>${index + 1}</td>
-      <td>${user.userName}</td>
-      <td>${user.passWord}</td>
-      <td>${user.active}</td>
+      <td>${user.username}</td>
+      <td>${user.password}</td>
+      <td>${user.active === 0 ? "Tài khoản bị chặn" : "Đang đoạt động"}</td>
       <td>${user.type}</td>
-      <td><button class="btn btn-warning">Chặn</button></td>
+      <td><button class="btn btn-warning block-user" name="${
+        user.id
+      }">Chặn</button></td>
+      <td><button class="btn btn-info unblock-user" name="${
+        user.id
+      }">Bỏ chặn</button></td>
       <td><button class="btn btn-danger delete-user" id="${
         user.id
       }">Xoá</button></td>
@@ -95,6 +127,18 @@ function renderUserLocal() {
     button.addEventListener("click", () => {
       const userId = button.id;
       deleteUser(userId);
+    });
+  });
+  $S(".block-user").forEach((button) => {
+    button.addEventListener("click", () => {
+      const userId = button.name;
+      blockUser(userId);
+    });
+  });
+  $S(".unblock-user").forEach((button) => {
+    button.addEventListener("click", () => {
+      const userId = button.name;
+      unBlockUser(userId);
     });
   });
 }

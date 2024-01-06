@@ -137,24 +137,38 @@ function deleteCategory(categoryId) {
 }
 
 // sửa sản phẩm
-function getIndex(data) {
-  let editCategoryIndex = categoryLocalStorage.filter(
+function getId(data) {
+  let editCategoryIndex = categoryLocalStorage.find(
     (category) => category.id === data
   );
   return editCategoryIndex;
 }
+let itemCategory;
 function editCategory(categoryName) {
-  let itemCategory = getIndex(categoryName);
-  $("#nameEdit").value = itemCategory[0].name;
+  itemCategory = getId(categoryName);
+  $("#nameEdit").value = itemCategory.name;
+  console.log(itemCategory);
 }
-
 // submit form sửa
 $("#formEditProduct").addEventListener("submit", (e) => {
   e.preventDefault();
   if ($("#nameEdit").value === "") {
     validateInput("#nameEdit", "#errNameEdit");
   } else {
-    // code chức năng sửa
+    const newData = {
+      ...itemCategory,
+      name: $("#nameEdit").value,
+    };
+    const findToSave = categoryLocalStorage.find(
+      (category) => category.id === itemCategory.id
+    );
+    if (findToSave) {
+      const indexCategory = categoryLocalStorage.indexOf(findToSave);
+      categoryLocalStorage[indexCategory] = newData;
+      localStorage.setItem("category", JSON.stringify(categoryLocalStorage));
+    }
+    renderCategoryLocal(categoryLocalStorage);
+    $("#modalEditProduct").style.display = "none";
   }
 });
 

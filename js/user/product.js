@@ -97,6 +97,7 @@ $("#productsAll").addEventListener("click", () => {
   $("#current").style.display = "flex";
 });
 
+//  lọc
 function categoryProducts(id) {
   let indexCategory = productsLocalStorage.filter(
     (category) => category.category === id

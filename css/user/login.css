@@ -59,6 +59,13 @@ h4 {
 .border-red {
   border: 1px solid red;
 }
+.forgetPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  color: #000;
+}
 .spanBottom {
   display: flex;
   justify-content: center;

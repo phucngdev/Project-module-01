@@ -6,49 +6,49 @@ let orderLocalStorage = JSON.parse(localStorage.getItem("orders")) || [];
 let userLoginLocalStorage = JSON.parse(localStorage.getItem("userLogin")) || {};
 let userOrder = JSON.parse(localStorage.getItem("userOrder")) || [];
 
-// lấy api địa chỉ
 var citis = document.getElementById("city");
 var districts = document.getElementById("district");
 var wards = document.getElementById("ward");
-var Parameter = {
-  url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-  method: "GET",
-  responseType: "application/json",
+
+const loadApi = () => {
+  axios
+    .get(
+      "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json"
+    )
+    .then((response) => renderCity(response.data))
+    .catch((err) => console.log(err));
 };
-var promise = axios(Parameter);
-promise.then(function (result) {
-  renderCity(result.data);
-});
+loadApi();
 
 function renderCity(data) {
-  data.forEach((item) => {
-    citis.options[citis.options.length] = new Option(item.Name, item.Id);
+  data.forEach((city) => {
+    citis.options[citis.options.length] = new Option(city.Name, city.Id);
   });
-  citis.onchange = function () {
+  citis.addEventListener("change", function () {
     district.length = 1;
     ward.length = 1;
     if (this.value != "") {
       const result = data.filter((n) => n.Id === this.value);
-      result[0].Districts.forEach((item) => {
-        district.options[district.options.length] = new Option(
-          item.Name,
-          item.Id
+      result[0].Districts.forEach((district) => {
+        districts.options[districts.options.length] = new Option(
+          district.Name,
+          district.Id
         );
       });
     }
-  };
-  district.onchange = function () {
+  });
+  district.addEventListener("change", function () {
     ward.length = 1;
     const dataCity = data.filter((n) => n.Id === citis.value);
     if (this.value != "") {
       const dataWards = dataCity[0].Districts.filter(
         (n) => n.Id === this.value
       )[0].Wards;
-      dataWards.forEach((item) => {
-        wards.options[wards.options.length] = new Option(item.Name, item.Id);
+      dataWards.forEach((ward) => {
+        wards.options[wards.options.length] = new Option(ward.Name, ward.Id);
       });
     }
-  };
+  });
 }
 
 let totalProducts = 0;

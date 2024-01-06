@@ -288,9 +288,11 @@ $("#searchInput").addEventListener("input", () => {
       const productName = product.name.toLowerCase();
       const productBarcode = product.barcode.toLowerCase();
       const productNcc = product.ncc.toLowerCase();
+      const productCategory = product.category.toLowerCase();
       return (
         productName.includes(inputSearch) ||
         productBarcode.includes(inputSearch) ||
+        productCategory.includes(inputSearch) ||
         productNcc.includes(inputSearch)
       );
     });

@@ -134,3 +134,6 @@ img {
 .modalDelete button:hover {
   opacity: 0.7;
 }
+.bg-black {
+  background-color: #000;
+}

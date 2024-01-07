@@ -63,54 +63,58 @@ function renderOrder() {
       e.stopPropagation();
       const orderId = button.id;
       acceptOrder(orderId);
+      bgButton();
     });
   });
   $S(".btn-refuse").forEach((button) => {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       const orderId = button.name;
-      refuseOrder(orderId);
-    });
-  });
-  document.addEventListener("DOMContentLoaded", () => {
-    const buttonStatus = JSON.parse(localStorage.getItem("buttonStatus")) || {};
-    const buttonStatusRefuse =
-      JSON.parse(localStorage.getItem("buttonStatusRefuse")) || {};
-    $S(".btn-accept").forEach((button) => {
-      button.addEventListener("click", () => {
-        const orderId = button.id;
-        button.classList.add("bg-black");
-        buttonStatus[orderId] = "bg-black";
-        localStorage.setItem("buttonStatus", JSON.stringify(buttonStatus));
+      $("#modalDelete").style.display = "flex";
+      $("#submitDelete").addEventListener("click", () => {
+        refuseOrder(orderId);
+        bgButtonRefuse();
+        $("#modalDelete").style.display = "none";
       });
-      const orderId = button.id;
-      if (buttonStatus[orderId] === "bg-black") {
-        button.classList.add("bg-black");
-      }
     });
-    localStorage.setItem("buttonStatus", JSON.stringify(buttonStatus));
-    $S(".btn-refuse").forEach((button) => {
-      button.addEventListener("click", () => {
-        const orderId = button.name;
-        button.classList.add("bg-black");
-        buttonStatusRefuse[orderId] = "bg-black";
-        localStorage.setItem(
-          "buttonStatusRefuse",
-          JSON.stringify(buttonStatusRefuse)
-        );
-      });
-      const orderId = button.name;
-      if (buttonStatusRefuse[orderId] === "bg-black") {
-        button.classList.add("bg-black");
-      }
-    });
-    localStorage.setItem(
-      "buttonStatusRefuse",
-      JSON.stringify(buttonStatusRefuse)
-    );
   });
 }
 renderOrder();
+window.addEventListener("click", () => {
+  if ($("#modalDelete").style.display === "flex") {
+    $("#modalDelete").style.display = "none";
+  }
+});
+
+function bgButton() {
+  const btnAccept = ordersLocalStorage.filter(
+    (accept) => accept.orderStatus === "Đơn hàng được chấp nhận"
+  );
+  btnAccept.forEach((btn) => {
+    let btnBg = btn.id;
+    let buttonElement = document.getElementById(btnBg);
+    if (buttonElement) {
+      buttonElement.classList.add("bg-black");
+      buttonElement.disabled = true;
+    }
+  });
+}
+bgButton();
+
+function bgButtonRefuse() {
+  const btnAccept = ordersLocalStorage.filter(
+    (accept) => accept.orderStatus === "Đơn hàng bị từ chối"
+  );
+  btnAccept.forEach((btn) => {
+    let btnName = btn.id;
+    let buttonElement = document.querySelector(`[name="${btnName}"]`);
+    if (buttonElement) {
+      buttonElement.classList.add("bg-black");
+      buttonElement.disabled = true;
+    }
+  });
+}
+bgButtonRefuse();
 
 function acceptOrder(OrderId) {
   const orderItemId = ordersLocalStorage.filter(

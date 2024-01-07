@@ -5,6 +5,7 @@
   top: 0;
   display: flex;
   overflow: scroll;
+  z-index: 1;
 }
 .news {
   width: 65%;

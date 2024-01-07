@@ -124,9 +124,14 @@ function renderUserLocal() {
   $("#tbody").innerHTML = trUser;
 
   $S(".delete-user").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
       const userId = button.id;
-      deleteUser(userId);
+      $("#modalDelete").style.display = "flex";
+      $("#submitDelete").addEventListener("click", () => {
+        deleteUser(userId);
+        $("#modalDelete").style.display = "none";
+      });
     });
   });
   $S(".block-user").forEach((button) => {
@@ -143,3 +148,8 @@ function renderUserLocal() {
   });
 }
 renderUserLocal();
+window.addEventListener("click", () => {
+  if ($("#modalDelete").style.display === "flex") {
+    $("#modalDelete").style.display = "none";
+  }
+});

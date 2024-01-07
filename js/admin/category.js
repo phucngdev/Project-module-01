@@ -212,7 +212,7 @@ function renderCategoryLocal(data) {
       e.stopPropagation();
       const categoryId = button.id;
       $("#modalDelete").style.display = "flex";
-      $("#modalDelete").addEventListener("click", () => {
+      $("#submitDelete").addEventListener("click", () => {
         deleteCategory(categoryId);
         $("#modalDelete").style.display = "none";
       });

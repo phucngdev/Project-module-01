@@ -331,9 +331,14 @@ function renderProductsLocal(data) {
   $("#tbody").innerHTML = trProduct;
 
   $S(".delete-products").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
       const productId = button.id;
-      deleteProduct(productId);
+      $("#modalDelete").style.display = "flex";
+      $("#submitDelete").addEventListener("click", () => {
+        deleteProduct(productId);
+        $("#modalDelete").style.display = "none";
+      });
     });
   });
   $S(".edit-products").forEach((button) => {
@@ -345,6 +350,11 @@ function renderProductsLocal(data) {
     });
   });
 }
+window.addEventListener("click", () => {
+  if ($("#modalDelete").style.display === "flex") {
+    $("#modalDelete").style.display = "none";
+  }
+});
 
 // render danh mục trong form
 function renderCategory() {

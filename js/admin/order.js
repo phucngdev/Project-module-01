@@ -64,6 +64,7 @@ function renderOrder() {
       const orderId = button.id;
       acceptOrder(orderId);
       bgButton();
+      location.reload();
     });
   });
   $S(".btn-refuse").forEach((button) => {
@@ -75,6 +76,7 @@ function renderOrder() {
         refuseOrder(orderId);
         bgButtonRefuse();
         $("#modalDelete").style.display = "none";
+        location.reload();
       });
     });
   });

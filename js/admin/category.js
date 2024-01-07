@@ -211,7 +211,11 @@ function renderCategoryLocal(data) {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       const categoryId = button.id;
-      deleteCategory(categoryId);
+      $("#modalDelete").style.display = "flex";
+      $("#modalDelete").addEventListener("click", () => {
+        deleteCategory(categoryId);
+        $("#modalDelete").style.display = "none";
+      });
     });
   });
   $S(".edit-category").forEach((button) => {
@@ -223,6 +227,12 @@ function renderCategoryLocal(data) {
     });
   });
 }
+
+window.addEventListener("click", () => {
+  if ($("#modalDelete").style.display === "flex") {
+    $("#modalDelete").style.display = "none";
+  }
+});
 
 function handleCurrent() {
   if (categoryLocalStorage.length === 0) {

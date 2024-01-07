@@ -135,9 +135,14 @@ function renderUserLocal() {
     });
   });
   $S(".block-user").forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
       const userId = button.name;
-      blockUser(userId);
+      $("#modalBlock").style.display = "flex";
+      $("#submitBlock").addEventListener("click", () => {
+        blockUser(userId);
+        $("#modalBlock").style.display = "none";
+      });
     });
   });
   $S(".unblock-user").forEach((button) => {
@@ -151,5 +156,8 @@ renderUserLocal();
 window.addEventListener("click", () => {
   if ($("#modalDelete").style.display === "flex") {
     $("#modalDelete").style.display = "none";
+  }
+  if ($("#modalBlock").style.display === "flex") {
+    $("#modalBlock").style.display = "none";
   }
 });

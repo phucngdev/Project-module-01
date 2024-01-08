@@ -22,7 +22,10 @@ loadApi();
 
 function renderCity(data) {
   data.forEach((city) => {
-    citis.options[citis.options.length] = new Option(city.Name, city.Id);
+    var newOption = document.createElement("option");
+    newOption.text = city.Name;
+    newOption.value = city.Id;
+    citis.add(newOption);
   });
   citis.addEventListener("change", function () {
     district.length = 1;
@@ -30,10 +33,10 @@ function renderCity(data) {
     if (this.value != "") {
       const result = data.filter((n) => n.Id === this.value);
       result[0].Districts.forEach((district) => {
-        districts.options[districts.options.length] = new Option(
-          district.Name,
-          district.Id
-        );
+        var newOption = document.createElement("option");
+        newOption.text = district.Name;
+        newOption.value = district.Id;
+        districts.add(newOption);
       });
     }
   });
@@ -45,7 +48,10 @@ function renderCity(data) {
         (n) => n.Id === this.value
       )[0].Wards;
       dataWards.forEach((ward) => {
-        wards.options[wards.options.length] = new Option(ward.Name, ward.Id);
+        var newOption = document.createElement("option");
+        newOption.text = ward.Name;
+        newOption.value = ward.Id;
+        wards.add(newOption);
       });
     }
   });
